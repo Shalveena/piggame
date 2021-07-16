@@ -9,6 +9,7 @@
 - Targeting elements
 - Changing the classes of the elements (using the classList property and add, remove, and toggle methods on it)
 - Changing text content of the elements
+- Changing attributes of elements
 
 ### Event Handler Registration
 

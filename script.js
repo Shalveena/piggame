@@ -62,7 +62,6 @@ btnRollDice.addEventListener("click", () => {
   if (playing) {
     // 1a
     const randomNum = Math.trunc(Math.random() * 6) + 1; // 1b
-    console.log(randomNum);
     dicePic.src = `./images/dice-${randomNum}.png`; // 1c
     dicePic.classList.remove("hidden"); // 1c
 
