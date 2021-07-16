@@ -10,6 +10,7 @@ const currentScoreP2Display = document.querySelector("#current--1");
 
 const btnRollDice = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
+const btnNewGame = document.querySelector(".btn--new");
 
 // Global Variables
 let currentScore, activePlayer, score, playing;
@@ -17,16 +18,33 @@ let currentScore, activePlayer, score, playing;
 // Functions
 
 // Set Initial/Starting conditions
+
+// 1. Set total score for each player to 0 & update display
+// 2. Set current score to 0 & update display
+// 3. Hide dice
+// 4. Make buttons clickable again (by changing "playing" variable to true again)
+// 5. Remove black background from active player (by removing .player--winner)
+// 6. Reset "activePlayer" variable to player 1;
+// 7. Ensure that player 1 has "player--active" class
 const init = () => {
-  dicePic.classList.add("hidden");
-  scoreP1Display.textContent = 0;
-  scoreP2Display.textContent = 0;
-  currentScore = 0;
-  activePlayer = 0;
-  score = [0, 0];
-  playing = true;
+  currentScore = 0; // 2
+  activePlayer = 0; // 6
+  score = [0, 0]; // 1
+  playing = true; // 4
+
+  dicePic.classList.add("hidden"); // 3
+  scoreP1Display.textContent = score[0]; // 1
+  scoreP2Display.textContent = score[1]; // 1
+  currentScoreP1Display.textContent = currentScore; // 2
+  currentScoreP2Display.textContent = currentScore; // 2
+
+  player1.classList.remove("player--winner"); // 5
+  player2.classList.remove("player--winner"); // 5
+  player1.classList.add("player--active"); // 7
+  player2.classList.remove("player--active"); // 7
 };
 
+// Function to switch player
 const switchPlayer = () => {
   activePlayer = activePlayer === 0 ? 1 : 0;
   player1.classList.toggle("player--active");
@@ -91,3 +109,6 @@ btnHold.addEventListener("click", () => {
     }
   }
 });
+
+// New Game button functionality
+btnNewGame.addEventListener("click", init);
